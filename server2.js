@@ -25,7 +25,6 @@ app.post('/users', async (req, res) => {
             password: hashedPassword
         }
         users.push(user);
-        console.log(hashedPassword)
         res.status(201).send();
     } 
     catch (error) 
@@ -76,6 +75,6 @@ function authenticateToken(req, res, next){
     } )
 }
 
-app.listen(3000);
+app.listen(4000);
 
 

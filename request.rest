@@ -1,4 +1,5 @@
-GET http://localhost:3000/users
+GET http://localhost:4000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InUzIiwicGFzc3dvcmQiOiIkMmIkMTAkVW9lL1djSWZETlV5OWNaNkZ2WHJrT09qMkh1eHoxZTlmWUZqVVM5anJVYjRIYzZHMnpSWEciLCJpYXQiOjE2OTMxOTI3ODF9.KLXGSS-uXBybnpCvBLxgZj5ddfmHG3a0TNnXt7ulDAc
 
 ###
 
@@ -6,9 +7,10 @@ POST http://localhost:3000/users
 Content-Type: application/json 
 
 {
-    "email": "roberto",
-    "password": "reyderedes"
+    "email": "u3",
+    "password": "06"
 }
+
 
 ###
 
@@ -16,6 +18,18 @@ POST http://localhost:3000/users/login
 Content-Type: application/json 
 
 {
-    "email": "roberto",
-    "password": "reyderedes"
+    "email": "u3",
+    "password": "06"
 }
+
+###
+
+<!--
+
+{
+    "email": "u3",
+    "password": "06"
+}
+
+these is password wich's hashed value is hardcoded into the array in the server files, in order to test acces in both servers.
+-->

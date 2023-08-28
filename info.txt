@@ -1,2 +1,5 @@
 tutorials used: 
 https://www.youtube.com/watch?v=Ud5xKCYQTjM&t=603s
+https://youtu.be/mbsmsi7l3r4?si=FMpj7p6D_AAV6R_X
+
+Testing with another server doesn't worked because the passwords are hashed and hahaha
