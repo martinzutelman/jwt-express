@@ -1,14 +1,13 @@
-GET http://localhost:4000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InUzIiwicGFzc3dvcmQiOiIkMmIkMTAkVW9lL1djSWZETlV5OWNaNkZ2WHJrT09qMkh1eHoxZTlmWUZqVVM5anJVYjRIYzZHMnpSWEciLCJpYXQiOjE2OTMxOTI3ODF9.KLXGSS-uXBybnpCvBLxgZj5ddfmHG3a0TNnXt7ulDAc
-
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJtYXJ0aW56dXRlbG1hbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRmcWlqTXcubU9NQnQxazZkTTM5dlguTXVDTEQwY2F3TGd3ZTkzZVBzN08wc1UuTE53OHV3MiIsIm5hbWUiOm51bGwsImlhdCI6MTY5MzMxODcyNn0.CGVrL_OCFp6qQJRhKUlbM73C0xknAGJyLLMBfNitERo
 ###
 
 POST http://localhost:3000/users
 Content-Type: application/json 
 
 {
-    "email": "u3",
-    "password": "06"
+    "email": "martinzutelman@gmail.com",
+    "password": "reyderedes"
 }
 
 
@@ -18,8 +17,8 @@ POST http://localhost:3000/users/login
 Content-Type: application/json 
 
 {
-    "email": "u3",
-    "password": "06"
+    "email": "martinzutelman@gmail.com",
+    "password": "reyderedes"
 }
 
 ###

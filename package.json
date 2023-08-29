@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js",
-    "devStart2": "nodemon server2.js"
+    "devStart": "npx nodemon server.js",
+    "devStart2": "npx nodemon server2.js"
   },
   "keywords": [],
   "author": "",
