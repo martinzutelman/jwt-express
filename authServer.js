@@ -8,6 +8,17 @@ const prisma = new PrismaClient();
 
 app.use (express.json());
 
+
+app.delete('/logout', async (req, res) => {
+    const refreshTokens = await prisma.refreshToken.deleteMany({
+        where: {
+            token: req.body.token
+        }
+    })
+    
+    res.sendStatus(204)
+})
+
 app.post('/token', async (req, res) => {
     const refreshToken = req.body.token; 
     

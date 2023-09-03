@@ -1,13 +1,22 @@
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlnbmFjaW9AZ21haWwuY29tIiwiaWF0IjoxNjkzNzY4NTYzLCJleHAiOjE2OTM3Njg1Nzh9.TkrQnIE58NsNWaV7WCrsgr8dXChKruV9MOgL0Kelr_0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJpZ25hY2lvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGowSWZ1YkZ3RzF3MXgxSjZUczNYYy5XRnZRN2dwNVZ3a0FBajFnUUdkMkJjNWJlZU1kS1RLIiwibmFtZSI6bnVsbCwiaWF0IjoxNjkzNzY4NjQ4LCJleHAiOjE2OTM3Njg2NjN9.Xq6BhohaFOkYZamRPWZTP9CH7YMNY96CWC35UycLUO8
 ###
 
+DELETE http://localhost:4000/logout 
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTM3NzA4NDh9.V7JAor46JRrI7eV2kzqsg00uRKweQ7LSGpGY1SZXkDI"
+}
+
+
+###
 POST http://localhost:3000/users
 Content-Type: application/json 
 
 {
-    "email": "ignacio@gmail.com",
-    "password": "ignacio"
+    "email": "jaz@gmail.com",
+    "password": "jaz"
 }
 
 ###
@@ -17,7 +26,7 @@ Content-Type: application/json
 
 {
     "token":
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJpZ25hY2lvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGowSWZ1YkZ3RzF3MXgxSjZUczNYYy5XRnZRN2dwNVZ3a0FBajFnUUdkMkJjNWJlZU1kS1RLIiwibmFtZSI6bnVsbCwiaWF0IjoxNjkzNzY3NzE0fQ.KW2lU-KwGCFnKUt4_eTRVTxZ_BEtfvJ4UpdPIZwDPhg"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTM3NzA1NjJ9.bgnqfOAGFK9xuVl0sTOlYSgUA09ZeP8GFj4u2KfziRw"
 } 
 
 ###
@@ -26,8 +35,8 @@ POST http://localhost:4000/users/login
 Content-Type: application/json 
 
 {
-    "email": "ignacio@gmail.com",
-    "password": "ignacio"
+    "email": "jaz@gmail.com",
+    "password": "jaz"
 }
 
 ###
