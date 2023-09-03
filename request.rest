@@ -40,13 +40,3 @@ Content-Type: application/json
 }
 
 ###
-
-<!--
-
-{
-    "email": "u3",
-    "password": "06"
-}
-
-these is password wich's hashed value is hardcoded into the array in the server files, in order to test acces in both servers.
--->
