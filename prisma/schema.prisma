@@ -13,5 +13,17 @@ model User{
   email String @unique
   password String
   name String? 
+  refreshTokens refreshToken[] 
 } 
+
+model refreshToken{
+  id Int @id @default(autoincrement())
+  token String @unique @db.VarChar(500) 
+  userId Int 
+  user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId], name: "userIdIndex")
+}
 

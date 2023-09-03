@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "devStart": "npx nodemon server.js",
-    "devStart2": "npx nodemon server2.js"
+    "devStartAuth": "npx nodemon authServer.js"
   },
   "keywords": [],
   "author": "",

@@ -1,24 +1,33 @@
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJtYXJ0aW56dXRlbG1hbkBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRmcWlqTXcubU9NQnQxazZkTTM5dlguTXVDTEQwY2F3TGd3ZTkzZVBzN08wc1UuTE53OHV3MiIsIm5hbWUiOm51bGwsImlhdCI6MTY5MzMxODcyNn0.CGVrL_OCFp6qQJRhKUlbM73C0xknAGJyLLMBfNitERo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlnbmFjaW9AZ21haWwuY29tIiwiaWF0IjoxNjkzNzY4NTYzLCJleHAiOjE2OTM3Njg1Nzh9.TkrQnIE58NsNWaV7WCrsgr8dXChKruV9MOgL0Kelr_0
 ###
 
 POST http://localhost:3000/users
 Content-Type: application/json 
 
 {
-    "email": "martinzutelman@gmail.com",
-    "password": "reyderedes"
+    "email": "ignacio@gmail.com",
+    "password": "ignacio"
 }
-
 
 ###
 
-POST http://localhost:3000/users/login
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token":
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJpZ25hY2lvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGowSWZ1YkZ3RzF3MXgxSjZUczNYYy5XRnZRN2dwNVZ3a0FBajFnUUdkMkJjNWJlZU1kS1RLIiwibmFtZSI6bnVsbCwiaWF0IjoxNjkzNzY3NzE0fQ.KW2lU-KwGCFnKUt4_eTRVTxZ_BEtfvJ4UpdPIZwDPhg"
+} 
+
+###
+
+POST http://localhost:4000/users/login
 Content-Type: application/json 
 
 {
-    "email": "martinzutelman@gmail.com",
-    "password": "reyderedes"
+    "email": "ignacio@gmail.com",
+    "password": "ignacio"
 }
 
 ###
