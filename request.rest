@@ -1,37 +1,37 @@
-GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZW1haWwiOiJpZ25hY2lvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGowSWZ1YkZ3RzF3MXgxSjZUczNYYy5XRnZRN2dwNVZ3a0FBajFnUUdkMkJjNWJlZU1kS1RLIiwibmFtZSI6bnVsbCwiaWF0IjoxNjkzNzY4NjQ4LCJleHAiOjE2OTM3Njg2NjN9.Xq6BhohaFOkYZamRPWZTP9CH7YMNY96CWC35UycLUO8
+GET http://localhost:3000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphekBnbWFpbC5jb20iLCJpYXQiOjE2OTQwNTEwMDQsImV4cCI6MTY5NDA1MTAxOX0.RENxQ5JZJ3HBhrxxKFrFwfur3UdHhlhWQB1cE3ji2Vg
 ###
 
-DELETE http://localhost:4000/logout 
+DELETE http://localhost:3000/auth/logout 
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTM3NzA4NDh9.V7JAor46JRrI7eV2kzqsg00uRKweQ7LSGpGY1SZXkDI"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTQwNTEwNDV9.20YtqB5qw02NsbKQJGTGp3sCAbouE5pgdQB4gj_vnaE"
 }
 
 
 ###
-POST http://localhost:3000/users
+POST http://localhost:3000/user
 Content-Type: application/json 
 
 {
-    "email": "jaz@gmail.com",
-    "password": "jaz"
+    "email": "ricardo@gmail.com",
+    "password": "ricardo"
 }
 
 ###
 
-POST http://localhost:4000/token
+POST http://localhost:3000/auth/token
 Content-Type: application/json
 
 {
     "token":
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTM3NzA1NjJ9.bgnqfOAGFK9xuVl0sTOlYSgUA09ZeP8GFj4u2KfziRw"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqYXpAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkNENvMVJpOTk3VnJtaUxMWFhNTExGLmZUVFlPc2hrRzNxTU04ejNiY1FDLjY4ZWRlMVdNY3kiLCJuYW1lIjpudWxsLCJpYXQiOjE2OTQwNTEwNDV9.20YtqB5qw02NsbKQJGTGp3sCAbouE5pgdQB4gj_vnaE"
 } 
 
 ###
 
-POST http://localhost:4000/users/login
+POST http://localhost:3000/auth/login
 Content-Type: application/json 
 
 {

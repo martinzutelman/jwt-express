@@ -1,25 +1,24 @@
 require('dotenv').config();
 const express = require('express'); 
-const app = express();
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-app.use (express.json());
+router.use (express.json());
 
 
-app.delete('/logout', async (req, res) => {
+router.delete('/logout', async (req, res) => {
     const refreshTokens = await prisma.refreshToken.deleteMany({
         where: {
             token: req.body.token
         }
     })
-    
     res.sendStatus(204)
 })
 
-app.post('/token', async (req, res) => {
+router.post('/token', async (req, res) => {
     const refreshToken = req.body.token; 
     
     if (refreshToken == null) return res.sendStatus(401)
@@ -46,7 +45,7 @@ app.post('/token', async (req, res) => {
     })
 })
 
-app.post('/users/login', async (req, res) => {
+router.post('/login', async (req, res) => {
 
     const user = await prisma.user.findUnique({
         where: {
@@ -96,6 +95,5 @@ function generateAccessToken(user){
     return null 
 }
 
-app.listen(4000);
-
+module.exports = router;
 

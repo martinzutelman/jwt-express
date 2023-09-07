@@ -1,14 +1,15 @@
 require('dotenv').config();
 const express = require('express'); 
-const app = express();
+const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-app.use (express.json());
+
+router.use (express.json());
 
 
-app.get ('/users', authenticateToken, async (req, res) => {
+router.get ('/', authenticateToken, async (req, res) => {
     
     const userInfo = await prisma.user.findUnique({
         where: {
@@ -18,7 +19,7 @@ app.get ('/users', authenticateToken, async (req, res) => {
     res.json(userInfo)
 });
 
-app.post('/users', async (req, res) => {
+router.post('/', async (req, res) => {
     try 
     {  
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -54,6 +55,6 @@ function authenticateToken(req, res, next){
     } )
 }
 
-app.listen(3000);
 
+module.exports = router;
 
