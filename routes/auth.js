@@ -15,11 +15,14 @@ router.delete('/logout', async (req, res) => {
             token: req.body.token
         }
     })
+
+    res.clearCookie('refreshToken');
+
     res.sendStatus(204)
 })
 
 router.post('/token', async (req, res) => {
-    const refreshToken = req.body.token; 
+    const refreshToken = req.cookies.refreshToken;
     
     if (refreshToken == null) return res.sendStatus(401)
 
@@ -41,6 +44,7 @@ router.post('/token', async (req, res) => {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403)
         const accessToken = generateAccessToken({email: user.email});
+        res.cookie('accessToken', accessToken, {httpOnly: true});
         res.json({accessToken: accessToken})
     })
 })
@@ -69,6 +73,9 @@ router.post('/login', async (req, res) => {
                 },
             });
 
+            res.cookie('refreshToken', refreshToken, {httpOnly: true});
+            res.cookie('accessToken', accessToken, {httpOnly: true});
+
             res.send(
                 {
                     'Success': 'Login Success',
@@ -76,6 +83,7 @@ router.post('/login', async (req, res) => {
                     refreshToken: refreshToken
                 }
             )
+
         }
         else{
             res.send('Not Allowed')
