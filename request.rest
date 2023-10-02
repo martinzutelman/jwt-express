@@ -41,3 +41,15 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:3000/project/create
+Content-Type: application/json
+
+{
+    "name": "Project 1",
+    "description": "Description 1",
+    "status": "active",
+    "userId": 1
+}
+
+###
