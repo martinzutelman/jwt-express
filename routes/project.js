@@ -1,4 +1,5 @@
 require('dotenv').config();
+const authenticateToken = require('./authMiddleware');
 const express = require('express'); 
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -6,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 const { join } = require('@prisma/client/runtime/library');
 const prisma = new PrismaClient();
+
 
 router.use (express.json());
 
@@ -42,7 +44,7 @@ router.post('/join', async (req, res) => {
         await prisma.projectUser.create({
             data: {
                 projectId: req.body.projectId,
-                userId: req.body.userId
+                userId: req.user.id
             }
         })
         res.status(201).send();
@@ -54,12 +56,12 @@ router.post('/join', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/getp', authenticateToken, async (req, res) => {
     try 
     {  
         const project = await prisma.Project.findUnique({
             where: {
-                id: req.params.id
+                id: req.body.projectId
             }
         })
         if (project == null) return res.status(404).send()

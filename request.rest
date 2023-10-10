@@ -1,27 +1,25 @@
-GET http://localhost:3000/user
-Authorization: Bearer 
 
-###
-
-DELETE http://localhost:3000/auth/logout 
-Content-Type: application/json
-
-{
-    "token": ""
-}
-
-
-###
+//create user
 POST http://localhost:3000/user
 Content-Type: application/json 
 
 {
-    "email": "ricardo@gmail.com",
-    "password": "ricardo"
+    "email": "porsche@gmail.com",
+    "password": "rey"
 }
-
 ###
 
+//login user
+POST http://localhost:3000/auth/login
+Content-Type: application/json 
+
+{
+    "email": "porsche@gmail.com",
+    "password": "rey"
+}
+###
+
+//get token
 POST http://localhost:3000/auth/token
 Content-Type: application/json
 
@@ -29,27 +27,40 @@ Content-Type: application/json
     "token":
     ""
 } 
-
 ###
 
-POST http://localhost:3000/auth/login
-Content-Type: application/json 
+//get user info
+GET http://localhost:3000/user
+Authorization: Bearer 
+###
+
+// log out user
+DELETE http://localhost:3000/auth/logout 
+Content-Type: application/json
 
 {
-    "email": "jaz@gmail.com",
-    "password": "jaz"
+    "token": ""
 }
-
 ###
 
+//create project
 POST http://localhost:3000/project/create
 Content-Type: application/json
 
 {
-    "name": "Project 1",
-    "description": "Description 1",
+    "name": "Project 2",
+    "description": "Description 2",
     "status": "active",
-    "userId": 1
+    "userId": 2
 }
+###
 
+//get project
+GET http://localhost:3000/project/getp
+Authorization: Bearer
+Content-Type: application/json
+
+{
+    "projectId": 1
+}
 ###
