@@ -14,7 +14,7 @@ model User{
   password String
   name String? 
   refreshTokens refreshToken[] 
-  projects UserProject[]
+  projects ProjectCollaborators[]
 } 
 
 model refreshToken{
@@ -24,7 +24,6 @@ model refreshToken{
   user User @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
 
   @@index([userId], name: "userIdIndex")
 }
@@ -33,15 +32,15 @@ model Project{
   id Int @id @default(autoincrement())
   name String
   description String
-  userId Int 
+  creatorId Int 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  users UserProject[]
+  collaborators ProjectCollaborators[]
 
-  @@index([userId], name: "userIdIndex")
+  @@index([creatorId], name: "userIdIndex")
 }
 
-model UserProject{
+model ProjectCollaborators{
   id Int @id @default(autoincrement())
   userId Int 
   projectId Int 

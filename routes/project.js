@@ -11,17 +11,25 @@ const prisma = new PrismaClient();
 
 router.use (express.json());
 
-router.post('/create', async (req, res) => {
+router.post('/create',authenticateToken, async (req, res) => {
     try 
     {  
       
-        await prisma.Project.create({
+        const newProject = await prisma.Project.create({
             data: {
                 name: req.body.name,
                 description: req.body.description,
-                userId: req.body.userId
+                creatorId: req.user.id
             }
-        })
+        });
+
+        await prisma.ProjectCollaborators.create({
+            data: {
+                projectId: newProject.id, 
+                userId: req.user.id 
+            }
+        });
+
         res.status(201).send();
     } 
     catch (error) 
@@ -32,7 +40,7 @@ router.post('/create', async (req, res) => {
 })
 
 
-router.post('/join', async (req, res) => {
+router.post('/join', authenticateToken, async (req, res) => {
     try 
     {  
         const project = await prisma.Project.findUnique({
@@ -41,7 +49,7 @@ router.post('/join', async (req, res) => {
             }
         })
         if (project == null) return res.status(404).send()
-        await prisma.projectUser.create({
+        await prisma.ProjectCollaborators.create({
             data: {
                 projectId: req.body.projectId,
                 userId: req.user.id
@@ -56,15 +64,60 @@ router.post('/join', async (req, res) => {
     }
 })
 
-router.get('/getp', authenticateToken, async (req, res) => {
+router.put('/modify', authenticateToken, async (req, res) => {
     try 
     {  
         const project = await prisma.Project.findUnique({
             where: {
                 id: req.body.projectId
             }
-        })
-        if (project == null) return res.status(404).send()
+        });
+
+        if (!project) {
+            return res.status(404).send(); 
+        }
+
+        const isCollaborator = await prisma.ProjectCollaborators.findFirst({
+            where: {
+                projectId: project.id,
+                userId: req.user.id
+            }
+        });
+        
+        if (!isCollaborator) {
+            return res.status(401).send(); 
+        }
+
+        await prisma.Project.update({
+            where: {
+                id: project.id
+            },
+            data: {
+                name: req.body.name,
+                description: req.body.description
+            }
+        });
+
+        res.status(201).send();
+
+    } 
+    catch (error) 
+    {
+       console.log(error)
+       res.status(500).send()
+    }
+})
+
+router.get('/getp', authenticateToken, async (req, res) => {
+    try 
+    {  
+        //maybe agregar filtro de arriba
+
+        const project = await prisma.Project.findUnique({
+            where: {
+                id: req.body.projectId
+            }
+        });
         res.status(200).json(project);
     } 
     catch (error) 
