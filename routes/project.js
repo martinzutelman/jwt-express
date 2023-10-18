@@ -118,7 +118,47 @@ router.get('/getp', authenticateToken, async (req, res) => {
                 id: req.body.projectId
             }
         });
+
         res.status(200).json(project);
+    } 
+    catch (error) 
+    {
+       console.log(error)
+       res.status(500).send()
+    }
+})
+
+router.delete('/delete', authenticateToken, async (req, res) => {
+    try 
+    {  
+        const project = await prisma.Project.findUnique({
+            where: {
+                id: req.body.projectId
+            }
+        });
+
+        if (!project) {
+            return res.status(404).send(); 
+        }
+
+        if (project.creatorId != req.user.id) {
+            return res.status(401).send(); 
+        }
+
+        await prisma.ProjectCollaborators.deleteMany({
+            where: {
+                projectId: project.id
+            }
+        });
+
+        await prisma.Project.delete({
+            where: {
+                id: project.id
+            }
+        });
+
+        res.status(200).send();
+
     } 
     catch (error) 
     {
